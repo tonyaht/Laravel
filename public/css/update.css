@@ -1,0 +1,29 @@
+body {
+	
+	margin: 0 auto;
+}
+h1 {
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+}
+
+table{
+	width: 60%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+td {
+	
+}
+tr p{
+	padding-top: 30px;
+}
+
+.right{
+	float: right;
+}
+.update{
+	display: inline-block;
+	margin-top:80px;
+}
