@@ -28,3 +28,10 @@ Route::get('UpdateForm/{id}', 'MyController@callUpdateForm');
 Route::post('Update', ['as'=>'Update', 'uses'=>'MyController@update']);
 
 Route::get('Delete/{id}', 'MyController@delete');
+
+
+//demo resolve MyController
+Route::get('resolve', function () {
+    $control = resolve('control');
+    echo $control;
+});

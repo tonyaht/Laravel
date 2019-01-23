@@ -18,7 +18,12 @@ class CBGV extends Model
 	public $thuong;
 	public $phat;
 
-	public function setLuongCung ($luongCung)
+	public function __toString()
+    {
+        return 'Hi, I am CBGV';
+    }
+
+	public function setLuongCung($luongCung)
 	{
 		$this->luongCung = $luongCung;
 	}
@@ -27,38 +32,38 @@ class CBGV extends Model
 		return $this->luongCung;
 	}
 
-	public function setThuong ($thuong)
+	public function setThuong($thuong)
 	{
 		$this->thuong = $thuong;
 	}
-	public function getThuong ()
+	public function getThuong()
 	{
 		return $this->thuong;
 	}
 
-	public function setPhat ($phat)
+	public function setPhat($phat)
 	{
 		$this->phat = $phat;
 	}
-	public function getPhat ()
+	public function getPhat()
 	{
 		return $this->phat;
 	}
 
-	public function setLuongThuc ($luongThuc)
+	public function setLuongThuc($luongThuc)
 	{
 		$this->luongThuc = $luongThuc;
 	}
-	public function getLuongThuc ()
+	public function getLuongThuc()
 	{
 		return $this->luongThuc;
 	}
-	public function tinhLuong ()
+	public function tinhLuong()
 	{
 		return $this->luongCung + $this->thuong - $this->phat;
 	}
 
-	public function showList ()
+	public function showList()
 	{
 		$array = CBGV::all()->toArray();
 		foreach ($array as $key => $value) {
@@ -78,28 +83,28 @@ class CBGV extends Model
 		return $array;
 	}
 
-	public function addCBGV ($hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat)
+	public function addCBGV($hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat)
 	{
 		CBGV::insert(['hoTen'=> $hoTen, 'namSinh'=>$namSinh, 'queQuan' => $queQuan, 'luongCung' => $luongCung, 'thuong' => $thuong, 'phat' => $phat]);
 	}
 
-	public function updateCBGV ($id, $hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat)
+	public function updateCBGV($id, $hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat)
 	{
 		CBGV::where('ID', '=', $id)->update(['hoTen'=> $hoTen, 'namSinh'=>$namSinh, 'queQuan' => $queQuan, 'luongCung' => $luongCung, 'thuong' => $thuong, 'phat' => $phat]);
 	}
 
-	public function deleteCBGV ($id)
+	public function deleteCBGV($id)
 	{
 		CBGV::where('ID', '=', $id)->delete();
 	}
 
-	public function searchCBGV ($hoTen)
+	public function searchCBGV($hoTen)
 	{
 		$array = CBGV::where('hoTen','Like', '%'.$hoTen.'%')->get()->toArray();
 		return $array;
 	}
 
-	public function displayInforByID ($id)
+	public function displayInforByID($id)
 	{
 
 		$array = CBGV::where('ID','=', $id)->get()->toArray();

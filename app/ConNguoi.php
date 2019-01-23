@@ -11,37 +11,38 @@ trait ConNguoi
 	public $queQuan;
 
 
-	public function setID ($ID)
+	public function setID($ID)
 	{
 		$this->ID = $ID;
 	}
-	public function getID ()
+	public function getID()
 	{
 		return $this->ID;
 	}
 	
-	public function setHoTen ($hoTen)
+	public function setHoTen($hoTen)
 	{
 		$this->hoTen = $hoTen;
 	}
-	public function getHoTen ()
+	public function getHoTen()
 	{
 		return $this->hoTen;
 	}
 
-	public function setNamSinh ($namSinh)
+	public function setNamSinh($namSinh)
 	{
 		$this->namSinh = $namSinh;
 	}
-	public function getNamsinh(){
+	public function getNamsinh()
+	{
 		return $this->namSinh;
 	}
 
-	public function setQueQuan ($queQuan)
+	public function setQueQuan($queQuan)
 	{
 		$this->queQuan = $queQuan;
 	}
-	public function getQueQuan ()
+	public function getQueQuan()
 	{
 		return $this->queQuan;
 	}

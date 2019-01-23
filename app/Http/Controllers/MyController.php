@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,21 +8,35 @@ use App\CBGV;
 
 class MyController extends Controller
 {
-    public function viewList ()
+    protected $gv;
+
+    public function __construct(CBGV $gv)
     {
-    	$gv = new CBGV();
+        $this->gv = $gv;
+    }
+
+    //demo Service Provider
+    public function __toString()
+    {
+        echo $this->gv;
+        echo '<br>';
+        return 'Hello, I am Controller';
+    }
+
+    public function viewList()
+    {
     	$array = array();
 
-    	$array = $gv->showList();
+    	$array = $this->gv->showList();
     	return view('DisplayList', ['array'=> $array]);
     }
 
-    public function callAddForm ()
+    public function callAddForm()
     {
     	return view('addForm');
     }
 
-    public function add (Request $request)
+    public function add(Request $request)
     {
     	$hoTen = $request->hoTen;
     	$namSinh = $request->namSinh;
@@ -30,23 +45,23 @@ class MyController extends Controller
     	$thuong = $request->thuong;
     	$phat = $request->phat;
 
-    	$gv = new CBGV();
-    	$gv->addCBGV($hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat);
+    	// $gv = new CBGV();
+    	$this->gv->addCBGV($hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat);
     	return redirect()->to('http://localhost/CBGV/public/');
     	
     }
 
-    public function callUpdateForm ($id)
+    public function callUpdateForm($id)
     {
-    	$gv = new CBGV();
+    	// $gv = new CBGV();
     	$array = array();
 
-    	$array = $gv->displayInforByID($id);
+    	$array = $this->gv->displayInforByID($id);
 
     	return view('updateForm', ['array'=> $array]);
     }
 
-    public function update (Request $request)
+    public function update(Request $request)
     {
     	$id = $request->id;
     	$hoTen = $request->hoTen;
@@ -56,27 +71,27 @@ class MyController extends Controller
     	$thuong = $request->thuong;
     	$phat = $request->phat;
 
-    	$gv = new CBGV();
-    	$gv->updateCBGV($id, $hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat);
+    	// $gv = new CBGV();
+    	$this->gv->updateCBGV($id, $hoTen, $namSinh, $queQuan, $luongCung, $thuong, $phat);
 
     	return redirect()->to('http://localhost/CBGV/public/');
     }
 
-    public function delete ($id)
+    public function delete($id)
     {
-    	$gv = new CBGV();
-    	$gv->deleteCBGV($id);
+    	// $gv = new CBGV();
+    	$this->gv->deleteCBGV($id);
 
     	return redirect()->to('http://localhost/CBGV/public/');
     }
 
-    public function search (Request $request)
+    public function search(Request $request)
     {
     	$ten = $request->name;
-    	$gv = new CBGV();
+    	// $gv = new CBGV();
     	$array = array();
 
-    	$array = $gv->searchCBGV($ten);
+    	$array = $this->gv->searchCBGV($ten);
 
     	return view('DisplayList', ['array'=> $array]);
     }
